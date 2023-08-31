@@ -5,6 +5,6 @@
 	],
   "constraints": {
     "pnpm": "7.6.0",
-    "nodejs": "16.16.0"
+    "node": "16.16.0"
   }
 }
