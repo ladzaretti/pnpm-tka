@@ -4,7 +4,7 @@ specifiers:
   '@manypkg/get-packages': ^1.1.3
   '@pnpm/lockfile-file': ^5.1.4
   '@pnpm/lockfile-types': ^4.2.0
-  '@pnpm/lockfile-utils': ^4.1.0
+  '@pnpm/lockfile-utils': ^9.0.0
   '@pnpm/logger': ^4.0.0
   '@pnpm/prune-lockfile': ^4.0.12
   '@pnpm/read-project-manifest': ^3.0.6
@@ -31,7 +31,7 @@ specifiers:
 dependencies:
   '@manypkg/get-packages': 1.1.3
   '@pnpm/lockfile-file': 5.1.4_@pnpm+logger@4.0.0
-  '@pnpm/lockfile-utils': 4.1.0
+  '@pnpm/lockfile-utils': 9.0.0
   '@pnpm/logger': 4.0.0
   '@pnpm/prune-lockfile': 4.0.12
   '@pnpm/read-project-manifest': 3.0.6
@@ -759,6 +759,23 @@ packages:
       rfc4648: 1.5.2
     dev: false
 
+  /@pnpm/crypto.base32-hash/2.0.0:
+    resolution: {integrity: sha512-3ttOeHBpmWRbgJrpDQ8Nwd3W8s8iuiP5YZM0JRyKWaMtX8lu9d7/AKyxPmhYsMJuN+q/1dwHa7QFeDZJ53b0oA==}
+    engines: {node: '>=16.14'}
+    dependencies:
+      rfc4648: 1.5.2
+    dev: false
+
+  /@pnpm/dependency-path/2.1.5:
+    resolution: {integrity: sha512-Ki7v96NDlUzkIkgujSl+3sDY/nMjujOaDOTmjEeBebPiow53Y9Bw/UnxI8C2KKsnm/b7kUJPeFVbOhg3HMp7/Q==}
+    engines: {node: '>=16.14'}
+    dependencies:
+      '@pnpm/crypto.base32-hash': 2.0.0
+      '@pnpm/types': 9.4.0
+      encode-registry: 3.0.1
+      semver: 7.5.4
+    dev: false
+
   /@pnpm/error/3.0.1:
     resolution: {integrity: sha512-hMlbWbFcfcfolNfSjKjpeaZFow71kNg438LZ8rAd01swiVIYRUf/sRv8gGySru6AijYfz5UqslpIJRDbYBkgQA==}
     engines: {node: '>=14.19'}
@@ -817,16 +834,24 @@ packages:
       '@pnpm/types': 8.4.0
     dev: false
 
-  /@pnpm/lockfile-utils/4.1.0:
-    resolution: {integrity: sha512-agNVkmv0aTlPll1QgHUdWNT31pN+qOz0Da+VFGfVOnPbk0BngFMo/vbqUj1FH8kePN53j8MfVP6ruaFBNOFIbA==}
-    engines: {node: '>=14.6'}
+  /@pnpm/lockfile-types/5.1.3:
+    resolution: {integrity: sha512-dOVvpqLwCKfKdH4Civ+FwM1jRfiNc3w8QfgbLemFXbpPIQxeIm6qt2HCGafz65SJGbRS5DOe9DKxSJg4QkmStQ==}
+    engines: {node: '>=16.14'}
     dependencies:
-      '@pnpm/lockfile-types': 4.2.0
-      '@pnpm/resolver-base': 9.0.5
-      '@pnpm/types': 8.4.0
-      dependency-path: 9.2.3
+      '@pnpm/types': 9.4.0
+    dev: false
+
+  /@pnpm/lockfile-utils/9.0.0:
+    resolution: {integrity: sha512-1xXmuFWsWKZ52CNHgXCwvJLZ9G6vaZHCma33FV3TGYuG+Da8fQ3uNjYFu+EzOPVcgcx2o0CKpRgIgDUUgYNVwA==}
+    engines: {node: '>=16.14'}
+    dependencies:
+      '@pnpm/dependency-path': 2.1.5
+      '@pnpm/lockfile-types': 5.1.3
+      '@pnpm/pick-fetcher': 2.0.1
+      '@pnpm/resolver-base': 11.0.0
+      '@pnpm/types': 9.4.0
       get-npm-tarball-url: 2.0.3
-      ramda: 0.28.0
+      ramda: /@pnpm/ramda/0.28.1
     dev: false
 
   /@pnpm/logger/4.0.0:
@@ -847,6 +872,11 @@ packages:
       semver: 7.3.7
     dev: false
 
+  /@pnpm/pick-fetcher/2.0.1:
+    resolution: {integrity: sha512-rW9IqroTLSdrFgCRfxDOyL845e3ju0Lt8HmfljgJLIR8mIoCE6PUR7+JouoSUcauAx28mSMbYbbRYXKlxacdiA==}
+    engines: {node: '>=16.14'}
+    dev: false
+
   /@pnpm/prune-lockfile/4.0.12:
     resolution: {integrity: sha512-TXBiYBdUKzBBAS6OR91kklkebXKGjMAB6Wa8wrgosMkSPUbTdjMtqfENMCeavI0iGrUm8ktZTnYmvA+SKzRMvA==}
     engines: {node: '>=14.6'}
@@ -856,6 +886,10 @@ packages:
       '@pnpm/types': 8.4.0
       dependency-path: 9.2.3
       ramda: 0.28.0
+    dev: false
+
+  /@pnpm/ramda/0.28.1:
+    resolution: {integrity: sha512-zcAG+lvU0fMziNeGXpPyCyCJYp5ZVrPElEE4t14jAmViaihohocZ+dDkcRIyAomox8pQsuZnv1EyHR+pOhmUWw==}
     dev: false
 
   /@pnpm/read-project-manifest/3.0.6:
@@ -897,16 +931,21 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@pnpm/resolver-base/9.0.5:
-    resolution: {integrity: sha512-JOpHKRV1h8J7IqMnCeF/mHJT0YuKyMOPock0V7RutA5vPOp2o6u+U8OOhR6q0hYH99gcZQ8dPOSY9elUjwqShA==}
-    engines: {node: '>=14.6'}
+  /@pnpm/resolver-base/11.0.0:
+    resolution: {integrity: sha512-oxfjO8Ie6aBQPXSqOWGJP9s0xj9Z4cbRI7fK63WKhjwmNH4CTrSfikRL2o4FoXo2APAbJEUp2lCxx+86dq2tUg==}
+    engines: {node: '>=16.14'}
     dependencies:
-      '@pnpm/types': 8.4.0
+      '@pnpm/types': 9.4.0
     dev: false
 
   /@pnpm/types/8.4.0:
     resolution: {integrity: sha512-sq/UdSq/jWCpYglw9SFmvR8qzUEi0p2oZIO0AHjkWWQg4Qrolf6DgD0WWmLiEP2WxHjbYeyD3ZzWzQor1+6cvw==}
     engines: {node: '>=14.6'}
+
+  /@pnpm/types/9.4.0:
+    resolution: {integrity: sha512-IRDuIuNobLRQe0UyY2gbrrTzYS46tTNvOEfL6fOf0Qa8NyxUzeXz946v7fQuQE3LSBf8ENBC5SXhRmDl+mBEqA==}
+    engines: {node: '>=16.14'}
+    dev: false
 
   /@pnpm/write-project-manifest/3.0.5:
     resolution: {integrity: sha512-d56Lz1bIGSvaGRFG9rNliOayq8dLyLiexRaFX3KVO9zCziLJ7i2SNkYlw3bUhDCRYKEDcWvr34zS7NwKRlkBgQ==}
@@ -2226,6 +2265,13 @@ packages:
       mem: 8.1.1
     dev: false
 
+  /encode-registry/3.0.1:
+    resolution: {integrity: sha512-6qOwkl1g0fv0DN3Y3ggr2EaZXN71aoAqPp3p/pVaWSBSIo+YjLOWN61Fva43oVyQNPf7kgm8lkudzlzojwE2jw==}
+    engines: {node: '>=10'}
+    dependencies:
+      mem: 8.1.1
+    dev: false
+
   /encodeurl/1.0.2:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
     engines: {node: '>= 0.8'}
@@ -3475,7 +3521,7 @@ packages:
       jest-util: 28.1.3
       natural-compare: 1.4.0
       pretty-format: 28.1.3
-      semver: 7.3.7
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4679,6 +4725,13 @@ packages:
     dependencies:
       lru-cache: 6.0.0
 
+  /semver/7.5.4:
+    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+
   /send/0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
     engines: {node: '>= 0.8.0'}
@@ -5309,7 +5362,6 @@ packages:
       '@verdaccio/readme': 10.4.0
       '@verdaccio/streams': 10.2.0
       '@verdaccio/ui-theme': 6.0.0-6-next.25
-      JSONStream: 1.3.5
       async: 3.2.4
       body-parser: 1.20.0
       clipanion: 3.1.0
@@ -5326,6 +5378,7 @@ packages:
       handlebars: 4.7.7
       http-errors: 2.0.0
       js-yaml: 4.1.0
+      JSONStream: 1.3.5
       jsonwebtoken: 8.5.1
       kleur: 4.1.5
       lodash: 4.17.21
